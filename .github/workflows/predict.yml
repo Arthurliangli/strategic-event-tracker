@@ -1,0 +1,76 @@
+name: Predict — Fetch Events & Lock Predictions
+
+# Runs every 6 hours. Fetches new 8-K filings and news articles,
+# classifies events, generates theory predictions via Claude API,
+# and commits the updated data files back to the repo.
+#
+# SEPARATION OF CONCERNS: This job NEVER touches outcome/score data.
+# Scoring runs in a separate job (score.yml) on a staggered schedule.
+
+on:
+  schedule:
+    # Every 6 hours: 00:00, 06:00, 12:00, 18:00 UTC
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch:
+    inputs:
+      days_back:
+        description: 'Days to look back for events'
+        required: false
+        default: '7'
+      event_type:
+        description: 'Event type (or "all")'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ceo_turnover
+          - ma
+          - restructuring
+          - foreign_entry
+          - foreign_exit
+
+concurrency:
+  group: predict
+  cancel-in-progress: false  # never cancel an in-progress prediction job
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run prediction pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+          REPO_ROOT: ${{ github.workspace }}
+        run: |
+          DAYS="${{ github.event.inputs.days_back || '7' }}"
+          TYPE="${{ github.event.inputs.event_type || 'all' }}"
+          python scripts/run_pipeline.py --days "$DAYS" --event-type "$TYPE"
+
+      - name: Commit updated data files
+        run: |
+          git config user.name  "Theory Tournament Bot"
+          git config user.email "bot@theory-tournament"
+          git add data/events/ data/predictions/
+          git diff --cached --quiet || git commit -m \
+            "predict: $(date -u '+%Y-%m-%d %H:%M UTC') — auto-update events & predictions"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
