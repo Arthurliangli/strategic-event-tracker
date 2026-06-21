@@ -57,11 +57,11 @@ def get_trading_days(reference_date: str, n: int) -> str:
             progress=False,
             auto_adjust=True,
         )
-        trading_dates = spy.index.tolist()
+        trading_dates = [d for d in spy.index.tolist() if not pd.isna(d)]
         if len(trading_dates) > n:
-            return trading_dates[n].strftime("%Y-%m-%d")
+            return pd.Timestamp(trading_dates[n]).strftime("%Y-%m-%d")
         elif trading_dates:
-            return trading_dates[-1].strftime("%Y-%m-%d")
+            return pd.Timestamp(trading_dates[-1]).strftime("%Y-%m-%d")
     except Exception as e:
         logger.warning("Trading day lookup failed: %s — using calendar days", e)
 
@@ -119,8 +119,9 @@ def fetch_returns(
         return None, None
 
     # Align on common dates
-    firm_close = firm_data["Close"].dropna()
-    mkt_close  = mkt_data["Close"].dropna()
+    # yfinance >=0.2.x may return multi-level columns; squeeze to Series
+    firm_close = firm_data["Close"].squeeze().dropna()
+    mkt_close  = mkt_data["Close"].squeeze().dropna()
     common_dates = firm_close.index.intersection(mkt_close.index)
 
     if len(common_dates) < 2:
