@@ -1,0 +1,96 @@
+name: Score — Compute Outcomes & Update Leaderboard
+
+# Runs every 6 hours, staggered 30 minutes after the predict job.
+# Scores events whose outcome windows have closed, writes outcome and score
+# records, flags residuals, and sends notifications to crowd voters.
+#
+# SEPARATION OF CONCERNS: This job never generates or modifies predictions.
+# It only reads predictions and writes outcome/score data.
+
+on:
+  schedule:
+    # Every 6 hours, offset 30 minutes from predict job
+    - cron: '30 0,6,12,18 * * *'
+  workflow_dispatch:
+    inputs:
+      horizon:
+        description: 'Scoring horizon (3, 10, or both)'
+        required: false
+        default: 'both'
+        type: choice
+        options:
+          - both
+          - '3'
+          - '10'
+
+concurrency:
+  group: score
+  cancel-in-progress: false  # never cancel a scoring job
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scoring pipeline
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NOTIFICATION_FROM: ${{ secrets.NOTIFICATION_FROM }}
+          REPO_ROOT: ${{ github.workspace }}
+        run: |
+          HORIZON="${{ github.event.inputs.horizon || 'both' }}"
+          if [ "$HORIZON" = "both" ]; then
+            python scripts/run_scorer.py
+          else
+            python scripts/run_scorer.py --horizon "$HORIZON"
+          fi
+
+      - name: Commit updated data files
+        run: |
+          git config user.name  "Theory Tournament Bot"
+          git config user.email "bot@theory-tournament"
+          git add data/outcomes/ data/crowd/
+          git diff --cached --quiet || git commit -m \
+            "score: $(date -u '+%Y-%m-%d %H:%M UTC') — auto-update outcomes & scores"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Export latest data snapshot
+        run: |
+          # Create dated exports for reproducibility
+          DATE=$(date -u '+%Y-%m-%d')
+          mkdir -p data/snapshots
+          for f in events/events.csv predictions/predictions.csv outcomes/outcomes.csv outcomes/scores.csv; do
+            if [ -f "data/$f" ]; then
+              base=$(basename $f)
+              cp "data/$f" "data/snapshots/${DATE}_${base}"
+            fi
+          done
+
+      - name: Commit data snapshots
+        run: |
+          git config user.name  "Theory Tournament Bot"
+          git config user.email "bot@theory-tournament"
+          git add data/snapshots/
+          git diff --cached --quiet || git commit -m \
+            "snapshot: $(date -u '+%Y-%m-%d') data export"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
