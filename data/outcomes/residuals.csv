@@ -1,0 +1,5 @@
+residual_id,event_id,event_type,theories_all_missed,patterns_noted,flagged_at
+a61c790c-ca15-4b,d1df2345e71f3956,ceo_turnover,True,,2026-06-21T17:24:55.410815Z
+ca11a65e-f78b-49,e45c87e134103427,ceo_turnover,True,,2026-06-21T17:25:00.098773Z
+2b63c108-056d-4f,e0b32f309f6294f5,ceo_turnover,True,,2026-06-21T17:25:21.528068Z
+94a33659-e9b8-41,cf1795ec5a85b1ec,ceo_turnover,True,,2026-06-21T17:25:29.495088Z
