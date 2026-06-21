@@ -1,0 +1,5 @@
+outcome_id,event_id,return_3d,market_return_3d,car_3d,direction_3d,is_flat_3d,return_10d,market_return_10d,car_10d,direction_10d,is_flat_10d,outcome_window_end_3d,outcome_window_end_10d,scored_at
+84415afa-2c62-47,62e6350cc3bb1088,,,,,,,,,,,,,2026-06-21T14:37:21.126932Z
+cfe64a73-76a2-4d,51694c0d7ba4e064,,,,,,,,,,,,,2026-06-21T14:37:23.098932Z
+0055bf1a-b7ca-46,aa8006e14c3a870a,,,,,,,,,,,,,2026-06-21T14:37:29.812654Z
+c0ddfb0a-3f86-40,b04c8a05dfb0e918,,,,,,,,,,,,,2026-06-21T14:37:38.423832Z
