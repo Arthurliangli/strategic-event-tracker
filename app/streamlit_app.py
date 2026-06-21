@@ -85,11 +85,6 @@ st.markdown("""
 
 @st.cache_data(ttl=300)  # refresh every 5 minutes
 def get_data():
-    import os
-    from pathlib import Path
-    _root = Path(os.getenv("REPO_ROOT", Path(__file__).parent.parent))
-    _evf = _root / "data/events/events.csv"
-    st.sidebar.caption(f"🔍 root={_root} | events_exists={_evf.exists()}")
     events      = load_events()
     predictions = load_predictions()
     scores      = load_scores()
