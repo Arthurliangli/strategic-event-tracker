@@ -16,6 +16,7 @@ import logging
 import re
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta
 from typing import Any
@@ -192,14 +193,10 @@ def search_8k_filings(
             "startdt": start_date,
             "enddt": end_date,
             "forms": "8-K",
-            "_source": "file_date,entity_name,file_num,period_of_report,biz_location,inc_states",
             "from": str(from_offset),
-            "hits.hits.total.value": "true",
-            "hits.hits._source.accession_no": "true",
         }
 
-        url = EDGAR_EFTS_URL + "?" + "&".join(f"{k}={urllib.request.quote(str(v))}" for k, v in params.items())
-        # Use EFTS-specific headers
+        url = EDGAR_EFTS_URL + "?" + urllib.parse.urlencode(params)
         efts_headers = {
             "User-Agent": "StrategicEventTracker/1.0 research@youruniversity.edu",
             "Host": "efts.sec.gov",
@@ -217,38 +214,58 @@ def search_8k_filings(
 
         for hit in hits:
             src = hit.get("_source", {})
-            entity_name = src.get("entity_name", "")
-            filing_date = src.get("file_date", "")
-            cik_raw = src.get("entity_id", hit.get("_id", "").split(":")[0] if ":" in hit.get("_id", "") else "")
-            accession_no = hit.get("_id", "")
 
-            # Try to extract CIK from the hit id (format: CIK:accession)
-            if ":" in accession_no:
-                cik_raw, accession_no = accession_no.split(":", 1)
+            # _id format: "XXXXXXXXXX-YY-NNNNNN:filename.htm"
+            # Strip filename suffix after ':' to get the accession number
+            filing_id = hit.get("_id", "")
+            accession_no = filing_id.split(":")[0] if ":" in filing_id else filing_id
 
-            cik_padded = str(cik_raw).zfill(10)
+            # CIK is the first hyphen-delimited segment (10 digits with leading zeros)
+            id_parts = accession_no.split("-")
+            cik_padded = id_parts[0].zfill(10) if id_parts else "0000000000"
+            cik_raw = cik_padded.lstrip("0") or "0"
+
+            # _source.ciks may also carry CIKs (use as fallback)
+            src_ciks = src.get("ciks", [])
+            if not cik_raw and src_ciks:
+                cik_padded = str(src_ciks[0]).zfill(10)
+                cik_raw = cik_padded.lstrip("0") or "0"
 
             if cik_set and cik_padded not in cik_set:
                 continue
 
-            acc_clean = accession_no.replace("-", "")
+            # Entity name from display_names list
+            display_names = src.get("display_names", [])
+            if display_names and isinstance(display_names[0], dict):
+                entity_name = display_names[0].get("name", "")
+            elif display_names:
+                entity_name = str(display_names[0])
+            else:
+                entity_name = src.get("entity_name", "")
+
+            filing_date = src.get("file_date", "")
+            # Use adsh (clean accession) from _source if available
+            adsh = src.get("adsh", accession_no)
+
+            acc_clean = adsh.replace("-", "")
             doc_url = (
-                f"{EDGAR_ARCHIVES}/{cik_raw.lstrip('0')}/{acc_clean}/"
-                f"{accession_no}-index.htm"
+                f"{EDGAR_ARCHIVES}/{cik_raw}/{acc_clean}/{adsh}-index.htm"
             )
 
             results.append({
                 "entity_name": entity_name,
                 "cik": cik_padded,
-                "cik_raw": cik_raw.lstrip("0"),
-                "accession_no": accession_no,
+                "cik_raw": cik_raw,
+                "accession_no": adsh,
                 "filing_date": filing_date,
                 "item_number": item_number,
                 "index_url": doc_url,
             })
 
+        total_val = data.get("hits", {}).get("total", {})
+        total_count = total_val.get("value", 0) if isinstance(total_val, dict) else int(total_val or 0)
         from_offset += page_size
-        if from_offset >= min(data.get("hits", {}).get("total", {}).get("value", 0), max_hits):
+        if from_offset >= min(total_count, max_hits):
             break
 
     return results
