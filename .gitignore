@@ -1,0 +1,11 @@
+.env
+.pat
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+data/crowd/votes.csv
+data/raw/
+*.egg-info/
+.venv/
+venv/
