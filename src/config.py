@@ -26,14 +26,20 @@ NTFY_BASE           = "https://ntfy.sh"
 # ---------------------------------------------------------------------------
 
 ANTHROPIC_API_KEY   = os.getenv("ANTHROPIC_API_KEY", "")
+GROQ_API_KEY        = os.getenv("GROQ_API_KEY", "")
 NEWSAPI_KEY         = os.getenv("NEWSAPI_KEY", "")
 RESEND_API_KEY      = os.getenv("RESEND_API_KEY", "")
 NTFY_TOPIC          = os.getenv("NTFY_TOPIC", "theory-tournament")
 NOTIFICATION_FROM   = os.getenv("NOTIFICATION_FROM", "tournament@yourdomain.com")
 
-# Model used for prediction generation — swap here to change providers.
-# Must be an Anthropic model string, or override PREDICTION_MODEL in env.
-PREDICTION_MODEL    = os.getenv("PREDICTION_MODEL", "claude-opus-4-8")
+# LLM provider auto-detected from available API keys.
+# Set PREDICTION_MODEL env var to override the model name.
+# Groq default: llama-3.3-70b-versatile (free tier, OpenAI-compatible)
+# Anthropic default: claude-opus-4-8
+_default_model = (
+    "llama-3.3-70b-versatile" if os.getenv("GROQ_API_KEY") else "claude-opus-4-8"
+)
+PREDICTION_MODEL    = os.getenv("PREDICTION_MODEL", _default_model)
 
 # ---------------------------------------------------------------------------
 # Scoring constants
