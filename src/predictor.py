@@ -1,5 +1,8 @@
 """
-predictor.py — Locked prediction generation via Anthropic Claude API.
+predictor.py — Locked prediction generation via Groq or Anthropic Claude API.
+
+Provider is auto-detected: set GROQ_API_KEY for free Groq inference (llama-3.3-70b-versatile),
+or ANTHROPIC_API_KEY for Claude. GROQ_API_KEY takes precedence if both are set.
 
 NO-LEAKAGE GUARANTEE:
   Predictions are generated and written BEFORE any outcome data is retrieved.
@@ -24,10 +27,9 @@ import uuid
 from datetime import datetime
 from typing import Any
 
-import anthropic
-
 from .config import (
     ANTHROPIC_API_KEY,
+    GROQ_API_KEY,
     PREDICTION_MODEL,
     THEORY_ROSTER_VERSION,
     PREDICTION_COLUMNS,
@@ -37,13 +39,34 @@ from .theories import SYSTEM_PROMPT, build_prediction_prompt, get_theories_for_e
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Claude client
+# LLM client — auto-detects Groq (free) or Anthropic based on env keys
 # ---------------------------------------------------------------------------
 
-def _get_client() -> anthropic.Anthropic:
-    if not ANTHROPIC_API_KEY:
-        raise RuntimeError("ANTHROPIC_API_KEY not set.")
-    return anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+def _get_provider() -> str:
+    """Return 'groq' or 'anthropic' based on available API keys."""
+    if GROQ_API_KEY:
+        return "groq"
+    if ANTHROPIC_API_KEY:
+        return "anthropic"
+    raise RuntimeError(
+        "No LLM API key found. Set GROQ_API_KEY (free) or ANTHROPIC_API_KEY."
+    )
+
+
+def _get_client():
+    """Return an API client for the active provider."""
+    provider = _get_provider()
+    if provider == "groq":
+        from openai import OpenAI
+        logger.info("Using Groq provider (model: %s)", PREDICTION_MODEL)
+        return OpenAI(
+            api_key=GROQ_API_KEY,
+            base_url="https://api.groq.com/openai/v1",
+        )
+    else:
+        import anthropic
+        logger.info("Using Anthropic provider (model: %s)", PREDICTION_MODEL)
+        return anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
 
 # ---------------------------------------------------------------------------
@@ -54,15 +77,15 @@ def generate_prediction(
     theory_key: str,
     event_record: dict[str, Any],
     item_text: str,
-    client: anthropic.Anthropic | None = None,
+    client=None,
 ) -> dict[str, Any] | None:
     """
     Generate a locked prediction for one (event, theory) pair.
 
     Returns a prediction dict conforming to PREDICTION_COLUMNS, or None on failure.
+    Works with both Groq (OpenAI-compatible) and Anthropic clients.
     """
     from .config import THEORIES
-    from .theories import Theory
 
     theory = THEORIES.get(theory_key)
     if theory is None:
@@ -76,18 +99,29 @@ def generate_prediction(
     predicted_at = datetime.utcnow().isoformat() + "Z"
 
     try:
-        response = client.messages.create(
-            model=PREDICTION_MODEL,
-            max_tokens=512,
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_prompt}],
-        )
-        raw_text = response.content[0].text.strip()
-    except anthropic.APIError as e:
-        logger.error("Anthropic API error for %s/%s: %s", event_record.get("event_id"), theory_key, e)
-        return None
+        provider = _get_provider()
+        if provider == "groq":
+            # OpenAI-compatible API (Groq)
+            response = client.chat.completions.create(
+                model=PREDICTION_MODEL,
+                max_tokens=512,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": user_prompt},
+                ],
+            )
+            raw_text = response.choices[0].message.content.strip()
+        else:
+            # Anthropic API
+            response = client.messages.create(
+                model=PREDICTION_MODEL,
+                max_tokens=512,
+                system=SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": user_prompt}],
+            )
+            raw_text = response.content[0].text.strip()
     except Exception as e:
-        logger.error("Unexpected error generating prediction: %s", e)
+        logger.error("API error for %s/%s: %s", event_record.get("event_id"), theory_key, e)
         return None
 
     # Parse JSON response
