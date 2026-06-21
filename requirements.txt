@@ -1,0 +1,15 @@
+# Core pipeline
+anthropic>=0.40.0
+yfinance>=0.2.40
+pandas>=2.1.0
+requests>=2.31.0
+
+# Streamlit leaderboard
+streamlit>=1.40.0
+
+# Validation (kappa computation)
+scikit-learn>=1.4.0
+
+# Utilities (stdlib only for HTTP in edgar.py / notifier.py — no extra dep needed)
+# python-dotenv is optional for local development
+python-dotenv>=1.0.0
