@@ -56,6 +56,7 @@ jobs:
 
       - name: Run prediction pipeline
         env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
           REPO_ROOT: ${{ github.workspace }}
