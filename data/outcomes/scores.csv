@@ -211,3 +211,29 @@ dd27b523-3b98-4a,54a2eb53-99a9-4c,e586f8d761975200,entrenchment_ma,Managerial En
 869be54f-feb4-4f,a33d3720-dfa7-40,e586f8d761975200,synergy_tce,Synergy / Transaction Cost Economics,10,positive,positive,False,True,False,2026-06-22T01:57:16.638672Z
 6525049d-3549-43,39c02b62-87ab-45,e586f8d761975200,hubris_ma,Hubris Hypothesis (Roll 1986),10,negative,positive,False,False,False,2026-06-22T01:57:16.638689Z
 e44d7486-4538-4b,54a2eb53-99a9-4c,e586f8d761975200,entrenchment_ma,Managerial Entrenchment (Agency/M&A),10,negative,positive,False,False,False,2026-06-22T01:57:16.638699Z
+655452dc-0464-48,0cbb5a5c-0e2e-44,8106f270b004916f,synergy_tce,Synergy / Transaction Cost Economics,3,positive,positive,False,True,False,2026-06-22T03:52:58.764043Z
+050949e7-a8b7-47,5e213360-2c3f-42,8106f270b004916f,hubris_ma,Hubris Hypothesis (Roll 1986),3,negative,positive,False,False,False,2026-06-22T03:52:58.764066Z
+ef338e30-e302-4b,0460af5f-c87d-45,8106f270b004916f,entrenchment_ma,Managerial Entrenchment (Agency/M&A),3,negative,positive,False,False,False,2026-06-22T03:52:58.764080Z
+0c09babd-3ddf-47,0cbb5a5c-0e2e-44,8106f270b004916f,synergy_tce,Synergy / Transaction Cost Economics,10,positive,positive,False,True,False,2026-06-22T03:53:00.309628Z
+b3353db7-dff0-4d,5e213360-2c3f-42,8106f270b004916f,hubris_ma,Hubris Hypothesis (Roll 1986),10,negative,positive,False,False,False,2026-06-22T03:53:00.309652Z
+04417a5c-3b67-48,0460af5f-c87d-45,8106f270b004916f,entrenchment_ma,Managerial Entrenchment (Agency/M&A),10,negative,positive,False,False,False,2026-06-22T03:53:00.309667Z
+f34ad86c-c711-41,f7beec71-e21b-48,86d672f241cd7312,synergy_tce,Synergy / Transaction Cost Economics,3,positive,positive,False,True,False,2026-06-22T03:53:02.003393Z
+3bfa8902-ec8e-40,02e7ddd7-c45a-43,86d672f241cd7312,hubris_ma,Hubris Hypothesis (Roll 1986),3,negative,positive,False,False,False,2026-06-22T03:53:02.003415Z
+f148592e-5ed8-45,52f5b09b-1a0f-45,86d672f241cd7312,entrenchment_ma,Managerial Entrenchment (Agency/M&A),3,negative,positive,False,False,False,2026-06-22T03:53:02.003431Z
+37b9448d-1121-40,f7beec71-e21b-48,86d672f241cd7312,synergy_tce,Synergy / Transaction Cost Economics,10,positive,positive,False,True,False,2026-06-22T03:53:02.864204Z
+2492620c-3cdf-43,02e7ddd7-c45a-43,86d672f241cd7312,hubris_ma,Hubris Hypothesis (Roll 1986),10,negative,positive,False,False,False,2026-06-22T03:53:02.864229Z
+2c60c04f-a785-49,52f5b09b-1a0f-45,86d672f241cd7312,entrenchment_ma,Managerial Entrenchment (Agency/M&A),10,negative,positive,False,False,False,2026-06-22T03:53:02.864247Z
+7894d8e4-7a03-44,73833543-cd6d-49,4d6bc3e8d5710656,rbv_restructuring,Resource-Based View (Restructuring),3,negative,positive,False,False,False,2026-06-22T03:53:04.379243Z
+15f3ef4d-bbc1-42,ba28d967-e3f3-4f,4d6bc3e8d5710656,signaling_restructuring,Signaling Theory (Restructuring),3,positive,positive,False,True,False,2026-06-22T03:53:04.379262Z
+a349f0ae-b151-4a,eca1a00b-9d82-45,4d6bc3e8d5710656,stakeholder_restructuring,Stakeholder Theory (Restructuring),3,negative,positive,False,False,False,2026-06-22T03:53:04.379276Z
+d651f436-f263-4c,73833543-cd6d-49,4d6bc3e8d5710656,rbv_restructuring,Resource-Based View (Restructuring),10,negative,positive,False,False,False,2026-06-22T03:53:05.467863Z
+acdcd8af-5614-43,ba28d967-e3f3-4f,4d6bc3e8d5710656,signaling_restructuring,Signaling Theory (Restructuring),10,positive,positive,False,True,False,2026-06-22T03:53:05.467885Z
+85c96e93-98ed-41,eca1a00b-9d82-45,4d6bc3e8d5710656,stakeholder_restructuring,Stakeholder Theory (Restructuring),10,negative,positive,False,False,False,2026-06-22T03:53:05.467898Z
+ad117ff4-05c8-47,b666ff14-e11e-48,d2d2207f23ccf85e,rbv_restructuring,Resource-Based View (Restructuring),3,negative,positive,False,False,False,2026-06-22T03:53:06.416575Z
+8e9e2ac9-f14b-45,14c2e45c-9d66-4b,d2d2207f23ccf85e,signaling_restructuring,Signaling Theory (Restructuring),3,positive,positive,False,True,False,2026-06-22T03:53:06.416599Z
+92b179f6-fd0b-4c,ee45d0e5-8604-4a,d2d2207f23ccf85e,stakeholder_restructuring,Stakeholder Theory (Restructuring),3,negative,positive,False,False,False,2026-06-22T03:53:06.416614Z
+d0f2c4d3-d802-46,b666ff14-e11e-48,d2d2207f23ccf85e,rbv_restructuring,Resource-Based View (Restructuring),10,negative,positive,False,False,False,2026-06-22T03:53:07.939992Z
+356709e9-d28f-49,14c2e45c-9d66-4b,d2d2207f23ccf85e,signaling_restructuring,Signaling Theory (Restructuring),10,positive,positive,False,True,False,2026-06-22T03:53:07.940019Z
+45fb96a7-3dc6-44,ee45d0e5-8604-4a,d2d2207f23ccf85e,stakeholder_restructuring,Stakeholder Theory (Restructuring),10,negative,positive,False,False,False,2026-06-22T03:53:07.940037Z
+012859d1-a1af-4d,4bb19cd9-6a59-43,002b0b8392613a8e,rbv_restructuring,Resource-Based View (Restructuring),3,negative,positive,False,False,False,2026-06-22T03:53:08.969309Z
+fba6d084-1660-48,4bb19cd9-6a59-43,002b0b8392613a8e,rbv_restructuring,Resource-Based View (Restructuring),10,negative,positive,False,False,False,2026-06-22T03:53:10.394014Z
