@@ -43,18 +43,31 @@ def run(event_type_filter: list[str] | None = None, dry_run: bool = False) -> No
     events_df = load_events()
     preds_df  = load_predictions()
 
-    predicted_ids = set(preds_df["event_id"].tolist()) if not preds_df.empty else set()
     existing_pred_pairs = get_existing_prediction_pairs()
 
-    # Filter to events with no predictions at all
-    missing = events_df[~events_df["event_id"].isin(predicted_ids)]
+    # Filter to events that are missing at least one theory prediction
+    def has_missing_theories(row):
+        evt_type = row.get("event_type", "")
+        if evt_type not in EVENT_TYPES:
+            return False
+        return any(
+            (row["event_id"], tk) not in existing_pred_pairs
+            for tk in EVENT_TYPES[evt_type].theories
+        )
+
+    missing = events_df[events_df.apply(has_missing_theories, axis=1)]
 
     if event_type_filter:
         missing = missing[missing["event_type"].isin(event_type_filter)]
 
-    logger.info("Events missing predictions: %d", len(missing))
+    logger.info("Events with incomplete predictions: %d", len(missing))
     for _, row in missing.iterrows():
-        logger.info("  %s — %s — %s", row["company"], row["event_type"], row["filing_date"])
+        predicted_count = sum(
+            1 for tk in EVENT_TYPES.get(row["event_type"], type("", (), {"theories": []})()).theories
+            if (row["event_id"], tk) in existing_pred_pairs
+        )
+        total = len(EVENT_TYPES[row["event_type"]].theories) if row["event_type"] in EVENT_TYPES else "?"
+        logger.info("  %s — %s — %s  [%s/%s predicted]", row["company"], row["event_type"], row["filing_date"], predicted_count, total)
 
     if dry_run or missing.empty:
         return
