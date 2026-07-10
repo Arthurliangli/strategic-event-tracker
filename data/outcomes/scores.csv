@@ -333,3 +333,9 @@ adde629d-1079-43,0d79fc28-5ca1-44,a7780b57e7331f1f,disruption_ceo,Disruption / I
 02c7d73f-db9c-46,7d2a8094-40e4-44,a7780b57e7331f1f,upper_echelons,Upper Echelons Theory,10,positive,negative,False,False,False,2026-07-08T03:54:32.106210Z
 dbc2795a-2dfc-4c,27d65ee7-51ac-4e,a7780b57e7331f1f,agency_ceo,Agency Theory (CEO Turnover),10,positive,negative,False,False,False,2026-07-08T03:54:32.106221Z
 c0bef99b-c00b-43,0d79fc28-5ca1-44,a7780b57e7331f1f,disruption_ceo,Disruption / Instability View (CEO),10,negative,negative,False,True,False,2026-07-08T03:54:32.106228Z
+ed2b6bb1-e854-4f,ffb28370-d6fb-47,75252a426624e105,rbv_restructuring,Resource-Based View (Restructuring),3,negative,negative,False,True,False,2026-07-10T04:33:37.009251Z
+f5d26f1e-2248-41,364a4807-e30c-4c,75252a426624e105,signaling_restructuring,Signaling Theory (Restructuring),3,positive,negative,False,False,False,2026-07-10T04:33:37.009266Z
+2775d1bb-a066-42,2adecdbf-aa37-46,75252a426624e105,stakeholder_restructuring,Stakeholder Theory (Restructuring),3,negative,negative,False,True,False,2026-07-10T04:33:37.009279Z
+055c939f-9ef3-4e,ffb28370-d6fb-47,75252a426624e105,rbv_restructuring,Resource-Based View (Restructuring),10,negative,negative,False,True,False,2026-07-10T04:33:37.368759Z
+41b8809b-5aee-4f,364a4807-e30c-4c,75252a426624e105,signaling_restructuring,Signaling Theory (Restructuring),10,positive,negative,False,False,False,2026-07-10T04:33:37.368771Z
+8b6be1a7-5727-49,2adecdbf-aa37-46,75252a426624e105,stakeholder_restructuring,Stakeholder Theory (Restructuring),10,negative,negative,False,True,False,2026-07-10T04:33:37.368779Z
