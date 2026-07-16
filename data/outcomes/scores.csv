@@ -375,3 +375,9 @@ d80b18ba-dc93-4b,5951e126-1856-40,95c6d22b20f21ec7,disruption_ceo,Disruption / I
 f68470ff-32b6-4b,d09407f6-ab82-4f,95c6d22b20f21ec7,upper_echelons,Upper Echelons Theory,10,positive,positive,False,True,False,2026-07-15T03:44:59.785819Z
 fff5cbda-a042-4b,20a33c5b-559b-45,95c6d22b20f21ec7,agency_ceo,Agency Theory (CEO Turnover),10,neutral,positive,False,False,False,2026-07-15T03:44:59.785831Z
 8f5297d6-1e5d-4f,5951e126-1856-40,95c6d22b20f21ec7,disruption_ceo,Disruption / Instability View (CEO),10,negative,positive,False,False,False,2026-07-15T03:44:59.785839Z
+9dba2753-11ac-4d,e151a043-bf66-41,883bab787d8f18f2,upper_echelons,Upper Echelons Theory,3,neutral,negative,False,False,False,2026-07-16T03:47:05.264870Z
+1e1edd59-fe69-42,a843251f-1dd8-42,883bab787d8f18f2,agency_ceo,Agency Theory (CEO Turnover),3,neutral,negative,False,False,False,2026-07-16T03:47:05.264884Z
+a1fdac67-c9ed-47,8599609f-585f-4a,883bab787d8f18f2,disruption_ceo,Disruption / Instability View (CEO),3,negative,negative,False,True,False,2026-07-16T03:47:05.264897Z
+c7c7fb6d-7b4f-49,e151a043-bf66-41,883bab787d8f18f2,upper_echelons,Upper Echelons Theory,10,neutral,negative,False,False,False,2026-07-16T03:47:05.652781Z
+1a6545db-1748-45,a843251f-1dd8-42,883bab787d8f18f2,agency_ceo,Agency Theory (CEO Turnover),10,neutral,negative,False,False,False,2026-07-16T03:47:05.652793Z
+add9efbe-0afd-41,8599609f-585f-4a,883bab787d8f18f2,disruption_ceo,Disruption / Instability View (CEO),10,negative,negative,False,True,False,2026-07-16T03:47:05.652801Z
