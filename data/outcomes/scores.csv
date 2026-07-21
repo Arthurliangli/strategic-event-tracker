@@ -429,3 +429,15 @@ a8168d21-2bbf-40,fa43eb8e-4f9a-48,4a023857f4623f96,disruption_ceo,Disruption / I
 0cacffbc-779a-45,6cb053a0-0d2d-43,4a023857f4623f96,upper_echelons,Upper Echelons Theory,10,neutral,neutral,True,False,False,2026-07-18T03:41:49.619283Z
 683773c0-a471-4d,db585ca9-e8cf-4c,4a023857f4623f96,agency_ceo,Agency Theory (CEO Turnover),10,positive,neutral,True,False,False,2026-07-18T03:41:49.619293Z
 6e0af4b7-5686-46,fa43eb8e-4f9a-48,4a023857f4623f96,disruption_ceo,Disruption / Instability View (CEO),10,negative,neutral,True,False,False,2026-07-18T03:41:49.619300Z
+1f342242-dee6-43,668241e6-d405-4e,5f2fb14e2d04ba3f,synergy_tce,Synergy / Transaction Cost Economics,3,positive,positive,False,True,False,2026-07-21T03:56:11.498121Z
+0e31d6bb-d59e-41,7da9f23c-a091-41,5f2fb14e2d04ba3f,hubris_ma,Hubris Hypothesis (Roll 1986),3,negative,positive,False,False,False,2026-07-21T03:56:11.498136Z
+d41746b5-cce8-49,58cbf37b-6442-4e,5f2fb14e2d04ba3f,entrenchment_ma,Managerial Entrenchment (Agency/M&A),3,negative,positive,False,False,False,2026-07-21T03:56:11.498148Z
+84da344a-f320-4c,668241e6-d405-4e,5f2fb14e2d04ba3f,synergy_tce,Synergy / Transaction Cost Economics,10,positive,positive,False,True,False,2026-07-21T03:56:12.055997Z
+7e219955-2147-43,7da9f23c-a091-41,5f2fb14e2d04ba3f,hubris_ma,Hubris Hypothesis (Roll 1986),10,negative,positive,False,False,False,2026-07-21T03:56:12.056010Z
+250e4d8e-918b-4f,58cbf37b-6442-4e,5f2fb14e2d04ba3f,entrenchment_ma,Managerial Entrenchment (Agency/M&A),10,negative,positive,False,False,False,2026-07-21T03:56:12.056017Z
+e2179998-e548-45,e29b47e9-2abd-40,c39176dbafac6ff7,upper_echelons,Upper Echelons Theory,3,neutral,negative,False,False,False,2026-07-21T03:56:12.928886Z
+bc230d6f-e8a9-40,b9499be8-3a71-4b,c39176dbafac6ff7,agency_ceo,Agency Theory (CEO Turnover),3,positive,negative,False,False,False,2026-07-21T03:56:12.928900Z
+e8befcc2-3ef7-4b,dfbf5ac2-dfc7-48,c39176dbafac6ff7,disruption_ceo,Disruption / Instability View (CEO),3,negative,negative,False,True,False,2026-07-21T03:56:12.928907Z
+4bb320b2-2a15-47,e29b47e9-2abd-40,c39176dbafac6ff7,upper_echelons,Upper Echelons Theory,10,neutral,negative,False,False,False,2026-07-21T03:56:13.552924Z
+883aeef2-bd84-45,b9499be8-3a71-4b,c39176dbafac6ff7,agency_ceo,Agency Theory (CEO Turnover),10,positive,negative,False,False,False,2026-07-21T03:56:13.552936Z
+e03b3a17-6dfe-44,dfbf5ac2-dfc7-48,c39176dbafac6ff7,disruption_ceo,Disruption / Instability View (CEO),10,negative,negative,False,True,False,2026-07-21T03:56:13.552943Z
