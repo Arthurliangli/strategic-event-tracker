@@ -537,3 +537,15 @@ a1c072cd-16b0-47,9dc92d77-5a55-4a,5e6700825553a109,agency_ceo,Agency Theory (CEO
 c0a0d5e2-22e6-4c,3b7cae2b-c249-44,ff09082d639ab9f3,upper_echelons,Upper Echelons Theory,10,neutral,neutral,True,False,False,2026-07-29T03:49:36.771653Z
 e7d6a606-ad9f-49,a79af903-02f1-44,ff09082d639ab9f3,agency_ceo,Agency Theory (CEO Turnover),10,positive,neutral,True,False,False,2026-07-29T03:49:36.771664Z
 b947f8f8-12af-4f,fa061bb2-32e3-4b,ff09082d639ab9f3,disruption_ceo,Disruption / Instability View (CEO),10,negative,neutral,True,False,False,2026-07-29T03:49:36.771670Z
+9d3d1358-491f-41,dd832e98-f6c7-4c,d0f7c05429c851b7,upper_echelons,Upper Echelons Theory,3,neutral,positive,False,False,False,2026-07-30T03:41:19.643264Z
+70a4f9a8-076e-48,8814fd98-1c84-45,d0f7c05429c851b7,agency_ceo,Agency Theory (CEO Turnover),3,positive,positive,False,True,False,2026-07-30T03:41:19.643279Z
+5542c9c3-c546-41,1255f6a4-0249-4c,d0f7c05429c851b7,disruption_ceo,Disruption / Instability View (CEO),3,negative,positive,False,False,False,2026-07-30T03:41:19.643291Z
+662804c3-3aca-42,dd832e98-f6c7-4c,d0f7c05429c851b7,upper_echelons,Upper Echelons Theory,10,neutral,positive,False,False,False,2026-07-30T03:41:19.887676Z
+54121b32-56ff-47,8814fd98-1c84-45,d0f7c05429c851b7,agency_ceo,Agency Theory (CEO Turnover),10,positive,positive,False,True,False,2026-07-30T03:41:19.887689Z
+912d0b1a-3fc1-43,1255f6a4-0249-4c,d0f7c05429c851b7,disruption_ceo,Disruption / Instability View (CEO),10,negative,positive,False,False,False,2026-07-30T03:41:19.887697Z
+f597a0a0-08a3-41,e039c0b8-acd3-4d,f1490594b52e67f5,rbv_restructuring,Resource-Based View (Restructuring),3,negative,positive,False,False,False,2026-07-30T03:41:20.432044Z
+7af2c5e4-18ce-4b,e4c07952-e6ce-45,f1490594b52e67f5,signaling_restructuring,Signaling Theory (Restructuring),3,positive,positive,False,True,False,2026-07-30T03:41:20.432056Z
+2582fc78-f46f-4a,f5102e31-aef9-42,f1490594b52e67f5,stakeholder_restructuring,Stakeholder Theory (Restructuring),3,negative,positive,False,False,False,2026-07-30T03:41:20.432063Z
+fd43c090-c494-49,e039c0b8-acd3-4d,f1490594b52e67f5,rbv_restructuring,Resource-Based View (Restructuring),10,negative,positive,False,False,False,2026-07-30T03:41:20.782094Z
+6387f505-1982-48,e4c07952-e6ce-45,f1490594b52e67f5,signaling_restructuring,Signaling Theory (Restructuring),10,positive,positive,False,True,False,2026-07-30T03:41:20.782106Z
+5b79a7d5-af33-4f,f5102e31-aef9-42,f1490594b52e67f5,stakeholder_restructuring,Stakeholder Theory (Restructuring),10,negative,positive,False,False,False,2026-07-30T03:41:20.782113Z
