@@ -639,3 +639,21 @@ e7e87cdb-f04d-41,03d001c1-0b8e-43,a54c791f94dd8669,entrenchment_ma,Managerial En
 4ee884b5-f0a0-4b,7a8a56fd-dfe0-48,a54c791f94dd8669,synergy_tce,Synergy / Transaction Cost Economics,10,positive,negative,False,False,False,2026-08-06T03:49:22.760894Z
 8ab1c2ee-bc4c-4b,5869026e-2ace-4c,a54c791f94dd8669,hubris_ma,Hubris Hypothesis (Roll 1986),10,negative,negative,False,True,False,2026-08-06T03:49:22.760905Z
 894e36d5-d276-48,03d001c1-0b8e-43,a54c791f94dd8669,entrenchment_ma,Managerial Entrenchment (Agency/M&A),10,negative,negative,False,True,False,2026-08-06T03:49:22.760912Z
+f55b10cc-78c9-45,11334a7c-2f04-46,24919e9f29d9da43,upper_echelons,Upper Echelons Theory,3,neutral,positive,False,False,False,2026-08-07T00:23:56.935774Z
+7c9993de-d514-40,65c837a7-e8c8-4e,24919e9f29d9da43,agency_ceo,Agency Theory (CEO Turnover),3,positive,positive,False,True,False,2026-08-07T00:23:56.935786Z
+8960c023-1657-4a,f1be437d-0caa-45,24919e9f29d9da43,disruption_ceo,Disruption / Instability View (CEO),3,negative,positive,False,False,False,2026-08-07T00:23:56.935798Z
+9a56ea7c-d859-46,11334a7c-2f04-46,24919e9f29d9da43,upper_echelons,Upper Echelons Theory,10,neutral,positive,False,False,False,2026-08-07T00:23:57.457961Z
+c69f1e7c-6526-45,65c837a7-e8c8-4e,24919e9f29d9da43,agency_ceo,Agency Theory (CEO Turnover),10,positive,positive,False,True,False,2026-08-07T00:23:57.457972Z
+6c1238ad-fc15-4f,f1be437d-0caa-45,24919e9f29d9da43,disruption_ceo,Disruption / Instability View (CEO),10,negative,positive,False,False,False,2026-08-07T00:23:57.457980Z
+c0db9b19-0288-41,4d662395-a41e-42,e6c66487dc167929,upper_echelons,Upper Echelons Theory,3,neutral,positive,False,False,False,2026-08-07T00:23:58.229633Z
+c0a6e4e7-2c3b-48,71c7ec17-623e-47,e6c66487dc167929,agency_ceo,Agency Theory (CEO Turnover),3,positive,positive,False,True,False,2026-08-07T00:23:58.229643Z
+c9102d2f-f3d1-4b,cb24431c-b285-43,e6c66487dc167929,disruption_ceo,Disruption / Instability View (CEO),3,negative,positive,False,False,False,2026-08-07T00:23:58.229651Z
+7dca17ad-86f9-4b,4d662395-a41e-42,e6c66487dc167929,upper_echelons,Upper Echelons Theory,10,neutral,positive,False,False,False,2026-08-07T00:23:58.845972Z
+4c15a1a9-7cd1-49,71c7ec17-623e-47,e6c66487dc167929,agency_ceo,Agency Theory (CEO Turnover),10,positive,positive,False,True,False,2026-08-07T00:23:58.845983Z
+0b6eff59-129e-44,cb24431c-b285-43,e6c66487dc167929,disruption_ceo,Disruption / Instability View (CEO),10,negative,positive,False,False,False,2026-08-07T00:23:58.845991Z
+13c23c58-bd10-48,b020b17e-d5f4-44,9dae025354fac97b,synergy_tce,Synergy / Transaction Cost Economics,3,neutral,positive,False,False,False,2026-08-07T00:23:59.598612Z
+1606e95a-52a4-4a,6d75dbcc-6b05-4f,9dae025354fac97b,hubris_ma,Hubris Hypothesis (Roll 1986),3,negative,positive,False,False,False,2026-08-07T00:23:59.598623Z
+613235bf-6680-40,0ca1bdcf-e31a-47,9dae025354fac97b,entrenchment_ma,Managerial Entrenchment (Agency/M&A),3,negative,positive,False,False,False,2026-08-07T00:23:59.598629Z
+048fe686-9d5f-44,b020b17e-d5f4-44,9dae025354fac97b,synergy_tce,Synergy / Transaction Cost Economics,10,neutral,positive,False,False,False,2026-08-07T00:24:00.144989Z
+6b60b67d-5882-49,6d75dbcc-6b05-4f,9dae025354fac97b,hubris_ma,Hubris Hypothesis (Roll 1986),10,negative,positive,False,False,False,2026-08-07T00:24:00.144999Z
+f9c30fd9-527a-4d,0ca1bdcf-e31a-47,9dae025354fac97b,entrenchment_ma,Managerial Entrenchment (Agency/M&A),10,negative,positive,False,False,False,2026-08-07T00:24:00.145037Z
